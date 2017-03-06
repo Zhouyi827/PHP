@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>添加学生页面</title>
+<style>
+body{
+	background: #fff;
+}
+p{
+	margin: 0;
+	padding: 10px;
+	border-bottom: 1px solid #000;
+}
+h3{
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #000;
+	text-align: center;
+}
+p:last-child{
+	border-bottom: none;
+}
+input{
+	outline: none;
+}
+#wrap{
+	width: 250px;
+	background: #ddd;
+	border: 1px solid #000;
+	margin: 20px auto;
+}
+.btn{
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<div id="wrap">
+	<h3>学生信息添加界面</h3>
+	<form action="php/add.php" method="post">
+		<p>学生编号: <input type="text" name="stu_id"></p>
+		<p>学生姓名: <input type="text" name="stu_name"></p>
+		<p>数学成绩: <input type="text" name="stu_math"></p>
+		<p>英语成绩: <input type="text" name="stu_en"></p>
+		<p>语文成绩: <input type="text" name="stu_chinese"></p>
+		<p class="btn"><input type="submit" value="提交"></p>
+	</form>
+</div>
+</body>
+</html>
