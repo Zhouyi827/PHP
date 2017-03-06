@@ -1,0 +1,49 @@
+body{
+	background: #DFF0F6;
+}
+.wrap{
+	width: 300px;
+	border: 1px solid #E8E9E8;
+	background: #F1F1F1;
+	border-radius: 10px;
+	margin: 100px auto;
+	overflow: hidden;
+}
+h3{
+	width: 90%;
+	height: 30px;
+	margin: 0;
+	padding: 5px 5%;
+	line-height: 30px;
+	font-size: 20px;
+	font-weight: normal;
+	color: #000;
+}
+p{
+	margin: 0;
+}
+.text-list{
+	width: 100%;
+	background: #fff;
+}
+.text-list from{
+	width: 100%;
+}
+.text-list p{
+	width: 90%;
+	padding: 5px 5%;
+}
+.text-list p span{
+	display: inline-block;
+	width: 50px;
+}
+.text-list p input{
+	width: 200px;
+	height: 20px;
+	padding: 5px;
+	font-size: 14px;
+	border: 1px solid #D3CDF1;
+}
+.btn{
+	width: 100% !important;
+}
