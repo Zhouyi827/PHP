@@ -1,12 +1,11 @@
 <?php
 header('Content-type:text/html;charset=utf-8');
-date_default_timezone_set("PRC");
-$btvalues = $_POST['bt-text'];
-$nrvalues = $_POST['nr-text'];
-$date = date("Y-m-d H:m:s");
-$lybtn = $_POST['ly-btn'];
+date_default_timezone_set("Asia/Shanghai");
+$btvalues = $_POST["bt-text"];
+$nrvalues = $_POST["nr-text"];
+$date = date("Y-m-d H:i:s");
 if($btvalues == ''||$nrvalues == ''){
-	echo '内容为空,不能添加';
+	echo "<script>alert('主题或内容不能为空');window.location.href='insert.php';</script>";
 	exit;
 }
 //链接数据库
@@ -16,22 +15,24 @@ if(!$con){
 	exit;
 }
 //3,选择数据库 SQL语句
-mysql_select_db('mes');
-//添加一条数据
-$sql="INSERT INTO mes_info VALUES('1','$btvalues','$nrvalues','$date')";
+// mysql_select_db('mes');
+mysql_query("use mes");
 
- //编码
-//mysql_query("set names utf8");
-//$sql="SELECT * FROM mes_info";
+//编码
+mysql_query("set names utf8");
+//添加一条数据
+$sql="INSERT INTO message VALUES(null,'$btvalues','$nrvalues','$date')";
+
 
 //拿到结果
 $query=mysql_query($sql);
-if($query == true){
-openlog('index.php');
-}else{
-	echo '失败';
+//var_dump($query);
+if(!$query){
+	echo "<script>alert('抱歉,添加失败!');</script>";
+	exit;
 }
-
+echo '<script>window.location.href="index.php"</script>';
+exit;
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +63,6 @@ ul{
 	height: 200px !important;
 }
 </style>
-
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -93,7 +93,7 @@ ul{
 			<div class="panel panel-primary">
 				<div class="panel panel-heading"><i class="glyphicon glyphicon-pencil"></i>&nbsp留言内容</div>
 				<div class="panel panel-body">
-					<textarea name="nr-text" class="form-control nr-text col-lg-8 col-md-8 col-xl-8"></textarea>
+					<textarea name="nr-text" class="form-control nr-text"></textarea>
 				</div>
 			</div>
 			<div class="pull-right">
@@ -107,5 +107,28 @@ ul{
 <script src="./../components/bootstrap/dist/js/bootstrap.min.js"></script>
 </html>
 
+<!-- create table message2(
+id int auto_increment comment 'id',
+title varchar(20) not null comment 'title',
+content text not null comment 'content',
+addtime varchar(20) not null comment 'addtime',
+primary key(id)
+)charset=utf8; 
 
 
+INSERT INTO message VALUES(
+3,
+'标题3',
+'内容3',
+'2017-03-07 22:56:10'
+);
+
+create table message(
+id int auto_increment comment 'id',
+title varchar(20) not null comment '标题',
+content text not null comment '内容',
+addtime varchar(20) not null comment '添加时间',
+primary key(id)
+)charset=utf8;
+
+-->
